@@ -1,7 +1,7 @@
 from django import forms
-from .models import Plans
+from .models import Plan
 
 class PlanForm(forms.ModelForm):
     class Meta:
-        model = Plans
+        model = Plan
         fields = ['name', 'detail']

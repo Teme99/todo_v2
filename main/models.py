@@ -1,7 +1,7 @@
 from django.db import models
 from datetime import datetime
 
-class Plans(models.Model):
+class Plan(models.Model):
     name = models.CharField(max_length=100)
     detail = models.TextField()
     time_todo = models.DateTimeField(default=datetime.now(), blank=True)
