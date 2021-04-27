@@ -7,19 +7,22 @@
     <title>Document</title>
     <link rel="stylesheet" href="{% static 'css/w3.css' %}">
     <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="{% static 'js/w3.js' %}"></script>
 </head>
 <body bg="bg.jpg">
     <script>
         
     $(document).ready(function(){
-    $("form").hide();
+    $("#mainform").hide();
   });
-  $(button).click(function(){
-  $('form').show();
+  $("newplan").click(function(){
+  $("#mainform").show();
 });
 
-  // the hide and who effect is not working for unknown reason
+
+ 
+  // the hide and show effect is not working for unknown reason
     </script>
     <button id="newplan" class="w3-button w3-green w3-margin w3-padding w3-block">Add New Plan</button>
 
@@ -36,8 +39,8 @@
    {% for item in all %}
    <div class="w3-container w3-table">{{ item }}
      <form action="{% url 'deletePlan' item.id %}" method="POST">
-    <button type="submit" class="w3-button w3-red w3-right w3-margin">Delete</button>
     </form>
+    <button type="submit" class="w3-button w3-red w3-right w3-margin">Delete</button>
     <button class="w3-button w3-yellow w3-right w3-margin">Pending</button>
     <button class="w3-button w3-green w3-right w3-margin">Details</button>
 
