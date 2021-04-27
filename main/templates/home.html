@@ -7,26 +7,29 @@
     <title>Document</title>
     <link rel="stylesheet" href="{% static 'css/w3.css' %}">
     <script src="{% static 'js/jquery.js' %}"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="{% static 'js/w3.js' %}"></script>
-</head>
-<body bg="bg.jpg">
     <script>
+        $(document).ready(function(){
+        $("#mainform").hide();
         
-    $(document).ready(function(){
-    $("#mainform").hide();
+        $("#newplan").click(function(){
+        $("#mainform").toggle();
+    });
   });
-  $("newplan").click(function(){
-  $("#mainform").show();
-});
+  
+
+</script>
+
+</head>
 
 
- 
-  // the hide and show effect is not working for unknown reason
-    </script>
+
+<body>
+  
     <button id="newplan" class="w3-button w3-green w3-margin w3-padding w3-block">Add New Plan</button>
 
-    <form method="POST" action="{% url 'home' %}" id="mainform">
+    <form id="mainform" method="POST" action="{% url 'home' %}" autocomplete="off">
         {% csrf_token %}
         <input class="w3-input w3-text-blue w3-margin w3-padding" type="text" name="name" placeholder="Enter Plan Name">
         <textarea class="w3-input w3-text-blue w3-margin w3-padding" name="detail" id="" cols="30" rows="10" placeholder="Enter Details for your paln Here"></textarea>
