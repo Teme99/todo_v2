@@ -15,21 +15,16 @@
     $(document).ready(function(){
     $("form").hide();
   });
-    
 
-    $(document).ready(function(){
-    $("button").click(function(){
-    $("form").toggle();
-  });
-});
+  // the hide and who effect is not working for unknown reason
     </script>
     <button class="w3-button w3-green w3-margin w3-padding w3-block">Add New Plan</button>
 
-    <form method="POST" action="{% url 'home' %}" class="w3-form w3-border" id="mainform">
+    <form method="POST" action="{% url 'home' %}" id="mainform">
         {% csrf_token %}
         <input class="w3-input w3-text-blue w3-margin w3-padding" type="text" name="name" placeholder="Enter Plan Name">
         <textarea class="w3-input w3-text-blue w3-margin w3-padding" name="detail" id="" cols="30" rows="10" placeholder="Enter Details for your paln Here"></textarea>
-        <button id="adderButton" class="w3-button w3-yellow w3-margin w3-padding">Add To List</button>
+        <button id="dropper" class="w3-button w3-yellow w3-margin w3-padding">Add To List</button>
 <!-- automatically fetch the current time and store in the database -->
 
     </form>
@@ -37,15 +32,14 @@
 <div class="w3-container w3-margin w3-background-red w3-padding">
    {% for item in all %}
    <div class="w3-container w3-table">{{ item }}
-     <button class="w3-button w3-red w3-right w3-margin">Delete</button><button class="w3-button w3-yellow w3-right w3-margin">Pending</button><button class="w3-button w3-green w3-right w3-margin">Details</button>
-     <!-- if the completed button is clicked is should turn green say and completed -->
+     <form action="{% url 'deletePlan' item.id %}" method="POST">
+    <button type="submit" class="w3-button w3-red w3-right w3-margin">Delete</button>
+    </form>
+    <button class="w3-button w3-yellow w3-right w3-margin">Pending</button>
+    <button class="w3-button w3-green w3-right w3-margin">Details</button>
 
-
-   </div>
-
-   {% endfor %}
-</div>
-
+  <!-- if the completed button is clicked is should turn green say and completed -->
+   </div> {% endfor %}
 
     
 </body>

@@ -18,6 +18,11 @@ def home(request):
         return render(request, 'home.html')
     else: 
         return render(request, 'home.html')
+def deletePlan(request):
+    all_plans = Plans.objects.get(pk=id)
+    all_plans.delete()
+    return render(request, 'home.html')
+    
 
     
     
