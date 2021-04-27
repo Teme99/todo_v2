@@ -15,10 +15,13 @@
     $(document).ready(function(){
     $("form").hide();
   });
+  $(button).click(function(){
+  $('form').show();
+});
 
   // the hide and who effect is not working for unknown reason
     </script>
-    <button class="w3-button w3-green w3-margin w3-padding w3-block">Add New Plan</button>
+    <button id="newplan" class="w3-button w3-green w3-margin w3-padding w3-block">Add New Plan</button>
 
     <form method="POST" action="{% url 'home' %}" id="mainform">
         {% csrf_token %}
