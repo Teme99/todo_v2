@@ -5,7 +5,7 @@ from .forms import PlanForm
 
 def home(request):
     if request.method == "GET":
-        all_plans = Plans.objects.all
+        all_plans = Plan.objects.all
         return render(request, 'home.html', {'all':all_plans})
 
     if request.method == "POST":
