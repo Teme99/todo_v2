@@ -8,4 +8,5 @@ class Plans(models.Model):
     completed = models.BooleanField(default=False, blank=True)
 
     def __str__(self):
-        return self.name
+        return self.name + "\n" + self.detail
+        
