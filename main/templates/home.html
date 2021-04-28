@@ -9,21 +9,8 @@
     <script src="{% static 'js/jquery.js' %}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="{% static 'js/w3.js' %}"></script>
-    <script>
-        $(document).ready(function(){
-        $("#mainform").hide();
-        
-        $("#newplan").click(function(){
-        $("#mainform").toggle();
-    });
-  });
-  
-
-</script>
 
 </head>
-
-
 
 <body>
   
@@ -44,12 +31,40 @@
      <form action="{% url 'deletePlan' item.id %}" method="POST">
     </form>
     <button type="submit" class="w3-button w3-red w3-right w3-margin">Delete</button>
-    <button class="w3-button w3-yellow w3-right w3-margin">Pending</button>
+    <input class="w3-button w3-yellow w3-right w3-margin" type="button" onclick="change()" value="Pending" id="statusBtn">
     <button class="w3-button w3-green w3-right w3-margin">Edit</button>
 
   <!-- if the completed button is clicked is should turn green say and completed -->
    </div> {% endfor %}
 
+
+<script>
+
+$(document).ready(function(){
+        $("#mainform").hide();
+        
+        $("#newplan").click(function(){
+        $("#mainform").toggle();
+    });
+  });
+
+   // the follwing js code is to change the pending button to completed when clicked
+   function change() 
+{
+    var elem = document.getElementById("statusBtn");
+    if (elem.value=="Pending") elem.value = "Completed";
     
+}
+  
+</script>
+    
+
+<style>
+
+  #statusBtn:active {     
+      background-color:blue;    
+     
+  }
+  </style>
 </body>
 </html>
